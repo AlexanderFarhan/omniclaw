@@ -223,6 +223,12 @@
 - **📈 Resource Gating**: Battery/CPU/memory checks before every heavy operation on mobile.
 - **🧬 Genesis**: Self-evolution agent that collects telemetry and suggests refactoring.
 
+### 25. Secure Enclave & Hardware Locks (v4.2.0) 🔒
+- **🔑 Hardware Authentication**: `YubiKeyManager` derives AES-256-GCM encryption keys via HMAC-SHA1 challenge-response.
+- **🛡️ Encrypted Configurations**: Sensitive modules load configs from `.yaml.aes` using the `SecureConfigLoader` bound to physical hardware.
+- **💻 Hardware-Locked Execution**: Evolution and code-refactor agents (Genesis, Janitor) strictly check `platform.node()` to ensure execution remains locally isolated on authorized hardware.
+- **📦 Private Submodules**: Sensitive operational capabilities seamlessly mount via Git submodules (`kernel_bridge/`, `offensive/`).
+
 ## 🌐 Real-World Use Cases
 Wondering what you can actually build with an autonomous agent swarm? 
 Check out our **[Real-World Use Cases](USE_CASES.md)** document to see how engineers are using OmniClaw for:

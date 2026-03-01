@@ -1,0 +1,4 @@
+# Security & Hardware dependencies for OmniClaw Secure Modules
+cryptography>=41.0.0
+liboqs-python>=0.8.0 # For Kyber/Dilithium PQC mesh integration
+yubikey-manager>=5.1.0 # Alternative Python lib for YubiKey management (if not using ykchalresp)

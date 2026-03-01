@@ -67,6 +67,15 @@ python modules/scholar/exam_intelligence.py &
 # 7. Scout Agent (on-demand)
 python core/scout_agent.py example.com
 
+### 7. Core Services
+
+**Desktop Mode Only:**
+- Genesis Evolution Agent: Monitors telemetry and suggests optimizations.
+
+**Mobile Mode Only:**
+- Termux Camera: Periodic photo capture and LLM analysis (`modules/vision/termux_camera.py`).
+- Plant Monitor: Specific crop/plant monitoring workflow (`modules/sensors/plant_monitor.py`).
+
 # 8. MCP Server (for IDE integration)
 python connectors/mcp_host.py &
 ```
@@ -153,6 +162,27 @@ Runs on port 8000. External IDEs connect via WebSocket.
 **Resources:** `system://cpu`, `system://memory`, `plant://latest_health`, `exam://next_deadline`, `security://kill_switch`
 
 **Tools:** `send_telegram_message`, `trigger_plant_capture`, `toggle_kill_switch`, `get_pm2_status`
+
+---
+
+## 🔒 Secure Enclave & Hardware Authentication (Optional)
+
+OmniClaw supports isolating sensitive operational capabilities and forcing hardware authentication to unlock the framework.
+
+1. **Prerequisites**: You must have `yubikey-personalization` installed and a YubiKey present.
+    ```bash
+    # Ubuntu/Debian
+    sudo apt install yubikey-personalization
+    
+    # Termux
+    pkg install yubikey-personalization
+    ```
+2. **Setup YubiKey**: Run the setup script to format Slot 2 for HMAC-SHA1 Challenge-Response.
+    ```bash
+    chmod +x scripts/setup_yubikey.sh
+    ./scripts/setup_yubikey.sh
+    ```
+3. **Hardware Lock**: In `modules/evolution/local_code_janitor.py` and `genesis_local.py`, modify `AUTHORIZED_HARDWARE_NODE` to exactly match the result of `hostname` on your isolated secure machine, guaranteeing evolution logic never leaks.
 
 ---
 

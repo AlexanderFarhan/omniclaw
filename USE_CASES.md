@@ -259,3 +259,20 @@ The Plant Monitor uses your phone's camera and a multimodal LLM to diagnose leaf
 5. **Knowledge Graph:** Results are stored in the unified knowledge graph — so you can query "how has my plant been doing this month?" across sessions.
 
 > *Telegram at 8 AM: "🌱 Money Plant: Fair — slight nitrogen deficiency showing as yellowing on lower leaves. Recommendation: dilute liquid fertilizer (10-10-10) once this week."*
+
+---
+
+## 🔒 Use Case 16: Secure Enclave & Hardware Lock (Operational Security)
+
+**The Problem:** Your agents possess highly sensitive capabilities (e.g., custom eBPF hooks, aggressive recon tools) and configuration secrets. If your repository or device is compromised, your autonomous tools could be turned against you. Furthermore, you don't want autonomous code-rewriting agents pushing destructive changes to a remote server.
+
+**The OmniClaw Solution:**
+OmniClaw implements a zero-trust Secure Enclave using physical hardware authentication (YubiKey), `.aes` encrypted configuration files, and verified-node hardware locks.
+
+**How it works:**
+1. **Hardware Cryptography:** The `YubiKeyManager` sends an HMAC-SHA1 challenge to a physical YubiKey (Slot 2). The derived 32-byte hash acts as the AES-256-GCM encryption key.
+2. **Encrypted Enclaves:** Sensitive modules and routing logic are moved to private Git submodules. Their configurations exist entirely as `.yaml.aes` ciphertexts. Without the physical security key plugged into the port, the autonomous framework cannot load the modules.
+3. **Execution Isolation:** High-privilege autonomous workers (like the `LocalCodeJanitor` and `GenesisLocal` engines) execute `check_hardware_lock()`, explicitly validating that the `platform.node()` matches the authorized, Faraday-caged local node.
+4. **Resilience:** If the framework detects environment mismatch or lacks hardware presence, the enclave fails completely closed—protecting all sensitive capabilities and operational configurations.
+
+> *"Warning: Hardware Validation Failed. YubiKey not present. Secure Enclave halted. Orchestrator reverting to standard capability tier."*

@@ -1,13 +1,17 @@
-description: "Schema for secure modules. The actual .aes file is generated via secure_config.py encrypt_config()"
-version: "ov-1.0"
-modules_enabled:
-  - infiltrator
-  - stealth_mesh
-mesh_keys:
-  pqc_algorithm: "Kyber1024"
-  sig_algorithm: "Dilithium5"
+# Reference schema - never store actual values here
 targets:
-  allowed_networks: []
-  excluded_networks: ["127.0.0.1/8", "10.0.0.0/8"]
-api_keys:
-  llm_endpoint: "http://localhost:11434"
+  - type: "ip_range|domain|email"
+    value: ""
+    
+secure_vault:
+  path: "modules/security/encrypted_vault/secure_vault.json.aes"
+  
+c2_routing:
+  tor: true
+  i2p: true
+  vpn: true
+  
+geofence:
+  home_base_lat: 19.9
+  home_base_lon: 83.12
+  radius_km: 10

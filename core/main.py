@@ -176,6 +176,19 @@ class OmniClawDaemon:
         self.running = True
         logger.info(f"OmniClaw v4.2.0 starting (node={self.node_id})")
 
+        if not self.is_mobile:
+            # Validate Secure Enclave via YubiKey Challenge-Response
+            try:
+                from core.security.secure_config import SecureConfigLoader
+                loader = SecureConfigLoader()
+                if loader.unlock_vault('config/vault_key.enc'):
+                    self.secure_config = loader.load_secure_config('config/offensive_config.yaml.aes')
+                    logger.info("YubiKey authenticated. Secure Enclave active.")
+                else:
+                    logger.warning("YubiKey not present - secure modules disabled.")
+            except Exception as e:
+                logger.warning(f"Secure Enclave bypassed (Hardware missing/unconfigured): {e}")
+
         self._start_mesh()
 
         if self.is_mobile:

